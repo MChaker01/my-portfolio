@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+/* GLOBAL STYLES */
+@layer base {
+  :root {
+    /* LIGHT MODE ACCENT: Darker Green (Emerald 600) for better contrast */
+    --project-accent: #08865e;
+  }
+
+  .dark {
+    /* DARK MODE ACCENT: Bright Green (Emerald 500) for "neon" pop */
+    --project-accent: #10b981;
+  }
+
+  body {
+    @apply antialiased transition-colors duration-300 ease-in-out;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+}
+
+@theme {
+  /* CUSTOM COLORS */
+
+  /* --- DARK MODE --- */
+  /* Deep Charcoal / Near Black */
+  --color-primary-dark: #171717;
+
+  /* --- LIGHT MODE --- */
+  /* Soft Slate Gray - Reduces glare, adds premium feel */
+  /* Was #f5f5f5 (Too light) -> Now #F1F5F9 (Slate 100) */
+  --color-primary-light: #f1f5f9;
+
+  /* Text Colors helpers (used in Layout) */
+  --color-text-main: #ededed;
+  --color-text-muted: #a3a3a3;
+
+  /* Accent Color (Keep the green/teal) */
+  --color-accent: var(--project-accent);
+}
+
+/* DARK MODE STRATEGY */
+@variant dark (&:where(.dark, .dark *));
+
+/* BACKGROUND NOISE UTILITY */
+/* Optimized for both modes */
+@utility bg-noise {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+
+  /* 
+     Light Mode: Very transparent (3%) to avoid "dirty" look 
+     Dark Mode: Slightly more visible (5%) for texture
+  */
+  opacity: 0.03;
+
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Specific Dark Mode override for Noise if needed in JS, but CSS opacity usually handles it */
+.dark .bg-noise {
+  opacity: 0.05;
+}

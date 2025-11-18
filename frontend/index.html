@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/photo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MChaker | Software Engineer</title>
+    <meta
+      name="description"
+      content="Portfolio of MChaker, a Software Engineer specializing in the MERN Stack."
+    />
+
+    <!-- START OF FIX: Dark Mode Script -->
+    <script>
+      (function () {
+        // Check localStorage
+        const savedTheme = localStorage.getItem("theme");
+
+        // Logic: If saved is 'dark', OR if nothing is saved (Default to Dark), add class
+        if (savedTheme === "dark" || !savedTheme) {
+          document.documentElement.classList.add("dark");
+          // Ensure localStorage is consistent if it was empty
+          if (!savedTheme) localStorage.setItem("theme", "dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      })();
+    </script>
+    <!-- END OF FIX -->
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
