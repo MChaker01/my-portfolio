@@ -53,15 +53,15 @@ const Home = () => {
   };
 
   return (
-    <div className="w-full pt-10 pb-20 max-w-4xl mx-auto">
+    <div className="w-full pt-4 pb-18 max-w-4xl mx-auto">
       {/* HERO SECTION */}
-      <section className="mb-24 md:mb-32">
+      <section className="mb-20 md:mb-32">
         {/* Blur/Fade entrance */}
         <motion.div
           initial={{ opacity: 0, filter: "blur(10px)", y: -20 }}
           animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-8 inline-block relative"
+          className="mb-3 inline-block relative"
         >
           {/* Optional: Decorative ring for the profile pic */}
           <div className="absolute -inset-2 bg-accent/20 rounded-full blur-xl opacity-50 dark:opacity-30"></div>
@@ -72,11 +72,21 @@ const Home = () => {
           />
         </motion.div>
 
+        {/* RECOMMENDATION 1: Added subtitle before the name */}
+        <motion.p
+          variants={fadeInUp}
+          initial="hidden"
+          animate="visible"
+          className="text-accent font-semibold text-lg mb-1 tracking-wide"
+        >
+          Software Engineer
+        </motion.p>
+
         {/* SPLIT TEXT TITLE */}
-        <div className="mb-6">
+        <div className="mb-5">
           <SplitText
-            text="Software Engineer,"
-            className="text-4xl  md:text-6xl font-bold tracking-tighter leading-tight text-gray-900 dark:text-text-main"
+            text="Mohamed Chaker Ouaaddi,"
+            className="text-4xl md:text-6xl font-bold tracking-tighter leading-tight text-gray-900 dark:text-text-main"
           />
           <SplitText
             text="solving complex problems with modern tech."
@@ -85,7 +95,7 @@ const Home = () => {
           />
         </div>
 
-        {/* BIO */}
+        {/* RECOMMENDATION 2: Enhanced BIO with bold keywords */}
         <motion.p
           variants={fadeInUp}
           initial="hidden"
@@ -93,13 +103,18 @@ const Home = () => {
           transition={{ delay: 0.4 }}
           className="text-lg text-gray-600 dark:text-text-muted mb-10 max-w-2xl leading-relaxed"
         >
-          I am a Full Stack Developer based in Morocco. I have successfully
-          completed{" "}
-          <span className="text-accent font-semibold">
-            6 major engineering projects
+          I design and build modern web applications, from{" "}
+          <span className="text-gray-800 dark:text-gray-200 font-medium">
+            backend APIs
           </span>{" "}
-          mastering the MERN stack. I focus on performance, scalability, and
-          clean architecture.
+          to{" "}
+          <span className="text-gray-800 dark:text-gray-200 font-medium">
+            user interfaces
+          </span>
+          . Specialized in{" "}
+          <span className="text-accent font-semibold">
+            Node.js, Express, React, and MongoDB.
+          </span>
         </motion.p>
 
         {/* LINKS */}

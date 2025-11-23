@@ -12,6 +12,9 @@ const createProject = async (req, res) => {
     let { name, description, technologies, githubLink, demoLive, keyFeatures } =
       req.body;
 
+    if (githubLink === "") githubLink = undefined;
+    if (demoLive === "") demoLive = undefined;
+
     // Validate required fields
     if (!name || !description) {
       return res.status(400).json({ message: "Required fields missing." });
@@ -36,7 +39,7 @@ const createProject = async (req, res) => {
     // Handle uploaded image file (processed by Multer middleware)
     let projectImage = null;
     if (req.file) {
-      projectImage = req.file.path; 
+      projectImage = req.file.path;
     }
 
     // Ensure image was uploaded
@@ -129,6 +132,10 @@ const updateProject = async (req, res) => {
 
     // Prepare update data (spread operator creates copy of req.body)
     let updateData = { ...req.body };
+
+    // Convert empty strings to undefined
+    if (updateData.githubLink === "") updateData.githubLink = undefined;
+    if (updateData.demoLive === "") updateData.demoLive = undefined;
 
     // Parse arrays if sent as JSON strings
     if (typeof updateData.technologies === "string") {
